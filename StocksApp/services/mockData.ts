@@ -4,7 +4,7 @@ import { MarketMoversResponse } from '@/types/MarketMoversResponse'
 
 export const mockQuotes: Record<string, any> = {
   IBM: { symbol: 'IBM', price: '200.88', change: '-1.73', change_percentage: '-0.85%', volume: '3452648' },
-  AAPL: { symbol: 'AAPL', price: '189.74', change: '2.45', change_percentage: '1.31%', volume: '34289823' },
+  AAPL: { symbol: 'AAPL', price: '171.74', change: '2.45', change_percentage: '1.31%', volume: '34289823' },
   TSLA: { symbol: 'TSLA', price: '251.32', change: '4.91', change_percentage: '1.99%', volume: '18234123' },
   MSFT: { symbol: 'MSFT', price: '330.17', change: '1.88', change_percentage: '0.57%', volume: '29481234' },
   NFLX: { symbol: 'NFLX', price: '389.22', change: '-5.01', change_percentage: '-1.27%', volume: '1234567' },
@@ -18,7 +18,7 @@ export const mockQuotes: Record<string, any> = {
 export const mockMovers: MarketMoversResponse = {
   top_gainers: [
     { ticker: 'IBM', price: '198.23', change_amount: '3.21', change_percentage: '1.65%', volume: '2345789' },
-    { ticker: 'AAPL', price: '189.74', change_amount: '2.45', change_percentage: '1.31%', volume: '34289823' },
+    { ticker: 'AAPL', price: '171.74', change_amount: '2.45', change_percentage: '1.31%', volume: '34289823' },
     { ticker: 'TSLA', price: '251.32', change_amount: '4.91', change_percentage: '1.99%', volume: '18234123' },
     { ticker: 'MSFT', price: '330.17', change_amount: '1.88', change_percentage: '0.57%', volume: '29481234' }
   ],
