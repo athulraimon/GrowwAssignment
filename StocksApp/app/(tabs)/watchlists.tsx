@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import {
-  View, Text, StyleSheet, TouchableOpacity, FlatList,
-  Modal, TextInput, Alert, Animated
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  FlatList,
+  Modal,
+  TextInput,
+  Animated,
 } from 'react-native';
 import { useWatchlist } from '@/services/WatchlistContext';
 import { useRouter } from 'expo-router';
@@ -17,6 +23,7 @@ export default function WatchlistTabScreen() {
   const [actionModalVisible, setActionModalVisible] = useState(false);
   const [selectedWatchlist, setSelectedWatchlist] = useState<any>(null);
   const [showRenameInput, setShowRenameInput] = useState(false);
+
   const [renameText, setRenameText] = useState('');
   const [newWatchlistName, setNewWatchlistName] = useState('');
 
@@ -27,6 +34,7 @@ export default function WatchlistTabScreen() {
   const triggerToast = (msg: string) => {
     setToastMessage(msg);
     setShowToast(true);
+
     Animated.timing(toastOpacity, {
       toValue: 1,
       duration: 300,
@@ -44,7 +52,7 @@ export default function WatchlistTabScreen() {
 
   const handleRename = () => {
     if (renameText.trim()) {
-      selectedWatchlist.name = renameText.trim(); // For full persistence, add logic in context
+      selectedWatchlist.name = renameText.trim(); // Persist with context or backend
       triggerToast('Watchlist renamed');
     }
     setActionModalVisible(false);
@@ -53,7 +61,7 @@ export default function WatchlistTabScreen() {
 
   const handleDelete = () => {
     const updated = watchlists.filter(wl => wl.id !== selectedWatchlist.id);
-    watchlists.splice(watchlists.findIndex(w => w.id === selectedWatchlist.id), 1);
+    watchlists.splice(watchlists.findIndex(w => w.id === selectedWatchlist.id), 1); // Update context for real persistence
     triggerToast('Watchlist deleted');
     setActionModalVisible(false);
     setShowRenameInput(false);
@@ -61,6 +69,7 @@ export default function WatchlistTabScreen() {
 
   return (
     <View style={[styles.container, { paddingTop: insets.top + 16 }]}>
+      {/* Header */}
       <View style={styles.header}>
         <Text style={styles.title}>Your Watchlists</Text>
         <TouchableOpacity onPress={() => setModalVisible(true)}>
@@ -68,6 +77,7 @@ export default function WatchlistTabScreen() {
         </TouchableOpacity>
       </View>
 
+      {/* Watchlist List */}
       <FlatList
         data={watchlists}
         keyExtractor={(item) => item.id}
@@ -76,11 +86,13 @@ export default function WatchlistTabScreen() {
             <TouchableOpacity style={{ flex: 1 }} onPress={() => router.push(`/watchlist/${item.id}`)}>
               <Text style={styles.listText}>{item.name}</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {
-              setSelectedWatchlist(item);
-              setRenameText(item.name);
-              setActionModalVisible(true);
-            }}>
+            <TouchableOpacity
+              onPress={() => {
+                setSelectedWatchlist(item);
+                setRenameText(item.name);
+                setActionModalVisible(true);
+              }}
+            >
               <Ionicons name="ellipsis-vertical" size={20} color="#555" />
             </TouchableOpacity>
           </View>
@@ -88,8 +100,13 @@ export default function WatchlistTabScreen() {
         ListEmptyComponent={<Text style={styles.empty}>No watchlists yet.</Text>}
       />
 
-      {/* Add Modal */}
-      <Modal animationType="fade" transparent visible={modalVisible} onRequestClose={() => setModalVisible(false)}>
+      {/* Create Watchlist Modal */}
+      <Modal
+        animationType="fade"
+        transparent
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
         <View style={styles.modalOverlay}>
           <View style={styles.modalContainer}>
             <Text style={styles.modalTitle}>New Watchlist</Text>
@@ -104,14 +121,16 @@ export default function WatchlistTabScreen() {
               <TouchableOpacity onPress={() => setModalVisible(false)}>
                 <Text style={styles.flatButton}>Cancel</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => {
-                if (newWatchlistName.trim()) {
-                  addWatchlist(newWatchlistName.trim());
-                  setNewWatchlistName('');
-                  setModalVisible(false);
-                  triggerToast('Watchlist created');
-                }
-              }}>
+              <TouchableOpacity
+                onPress={() => {
+                  if (newWatchlistName.trim()) {
+                    addWatchlist(newWatchlistName.trim());
+                    setNewWatchlistName('');
+                    setModalVisible(false);
+                    triggerToast('Watchlist created');
+                  }
+                }}
+              >
                 <Text style={styles.flatButton}>Create</Text>
               </TouchableOpacity>
             </View>
@@ -120,7 +139,12 @@ export default function WatchlistTabScreen() {
       </Modal>
 
       {/* Rename/Delete Modal */}
-      <Modal animationType="slide" transparent visible={actionModalVisible} onRequestClose={() => setActionModalVisible(false)}>
+      <Modal
+        animationType="slide"
+        transparent
+        visible={actionModalVisible}
+        onRequestClose={() => setActionModalVisible(false)}
+      >
         <View style={styles.modalBackdrop}>
           <View style={styles.actionSheet}>
             {showRenameInput ? (
@@ -146,10 +170,12 @@ export default function WatchlistTabScreen() {
                   <Text style={[styles.actionText, { color: 'red' }]}>Delete</Text>
                 </TouchableOpacity>
                 <View style={styles.divider} />
-                <TouchableOpacity onPress={() => {
-                  setActionModalVisible(false);
-                  setShowRenameInput(false);
-                }}>
+                <TouchableOpacity
+                  onPress={() => {
+                    setActionModalVisible(false);
+                    setShowRenameInput(false);
+                  }}
+                >
                   <Text style={[styles.actionText, { color: '#007aff' }]}>Cancel</Text>
                 </TouchableOpacity>
               </>
@@ -158,7 +184,7 @@ export default function WatchlistTabScreen() {
         </View>
       </Modal>
 
-      {/* Toast */}
+      {/* Toast Notification */}
       {showToast && (
         <Animated.View style={[styles.toast, { opacity: toastOpacity }]}>
           <Text style={styles.toastText}>{toastMessage}</Text>
@@ -169,46 +195,113 @@ export default function WatchlistTabScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { padding: 16, backgroundColor: '#fff', flex: 1 },
-  title: { fontSize: 22, fontWeight: 'bold', marginBottom: 16 },
-  empty: { color: '#888', marginTop: 12 },
+  container: {
+    padding: 16,
+    backgroundColor: '#fff',
+    flex: 1,
+  },
   header: {
-    flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: 'bold',
+  },
+  empty: {
+    color: '#888',
+    marginTop: 12,
   },
   listRow: {
-    flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center',
-    paddingVertical: 12, borderBottomWidth: 1, borderColor: '#eee',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderColor: '#eee',
   },
-  listText: { fontSize: 16 },
-
+  listText: {
+    fontSize: 16,
+  },
   modalOverlay: {
-    flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.3)', justifyContent: 'center', alignItems: 'center',
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   modalContainer: {
-    width: '85%', backgroundColor: '#fff', borderRadius: 16, padding: 20,
-    shadowColor: '#000', shadowOpacity: 0.2, shadowOffset: { width: 0, height: 4 }, shadowRadius: 10, elevation: 6,
+    width: '85%',
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    padding: 20,
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 10,
+    elevation: 6,
   },
-  modalTitle: { fontSize: 20, fontWeight: '600', marginBottom: 16, textAlign: 'center' },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: '600',
+    marginBottom: 16,
+    textAlign: 'center',
+  },
   textInput: {
-    fontSize: 16, paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: 'gray', marginBottom: 20,
+    fontSize: 16,
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: 'gray',
+    marginBottom: 20,
   },
-  buttonRow: { flexDirection: 'row', justifyContent: 'flex-end', gap: 20 },
-  flatButton: { fontSize: 16, color: '#007aff', fontWeight: '500' },
-
+  buttonRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    gap: 20,
+  },
+  flatButton: {
+    fontSize: 16,
+    color: '#007aff',
+    fontWeight: '500',
+  },
   modalBackdrop: {
-    flex: 1, backgroundColor: 'rgba(0,0,0,0.4)', justifyContent: 'flex-end',
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.4)',
+    justifyContent: 'flex-end',
   },
   actionSheet: {
-    backgroundColor: '#fff', borderTopLeftRadius: 20, borderTopRightRadius: 20, padding: 20,
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    padding: 20,
   },
-  actionText: { fontSize: 16, paddingVertical: 12, textAlign: 'center' },
-  divider: { height: 1, backgroundColor: '#ddd', marginVertical: 4 },
-
+  actionText: {
+    fontSize: 16,
+    paddingVertical: 12,
+    textAlign: 'center',
+  },
+  divider: {
+    height: 1,
+    backgroundColor: '#ddd',
+    marginVertical: 4,
+  },
   toast: {
-    position: 'absolute', bottom: 40, alignSelf: 'center',
-    backgroundColor: 'grey', paddingHorizontal: 16, paddingVertical: 10,
-    borderRadius: 24, elevation: 3,
-    shadowColor: '#000', shadowOpacity: 0.2, shadowRadius: 4, shadowOffset: { width: 0, height: 2 },
+    position: 'absolute',
+    bottom: 40,
+    alignSelf: 'center',
+    backgroundColor: 'grey',
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    borderRadius: 24,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 2 },
   },
-  toastText: { color: '#fff', fontSize: 14 },
+  toastText: {
+    color: '#fff',
+    fontSize: 14,
+  },
 });

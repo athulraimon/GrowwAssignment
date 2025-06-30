@@ -16,7 +16,7 @@ import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const CARD_WIDTH = (Dimensions.get('window').width - 48) / 2; // 16 padding + 8 + 8 gap
+const CARD_WIDTH = (Dimensions.get('window').width - 48) / 2;
 
 export default function ExploreScreen() {
   const insets = useSafeAreaInsets();

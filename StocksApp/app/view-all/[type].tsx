@@ -19,7 +19,7 @@ import { fetchLogos } from '../../services/api';
 import { useRouter } from 'expo-router';
 
 
-const CARD_WIDTH = (Dimensions.get('window').width - 48) / 2; // 16 padding + 8 gap + 8 gap
+const CARD_WIDTH = (Dimensions.get('window').width - 48) / 2; 
 
 export default function ViewAllScreen() {
   const insets = useSafeAreaInsets();

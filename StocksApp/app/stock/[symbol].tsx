@@ -282,7 +282,6 @@ export default function StockDetailScreen() {
 }
 
 const styles = StyleSheet.create({
-  // your existing styles here...
   toast: {
     position: 'absolute',
     bottom: 40,
@@ -317,123 +316,122 @@ const styles = StyleSheet.create({
   metric: { alignItems: 'flex-start', flex: 1 },
   metricLabel: { fontSize: 12, color: '#888' },
   rangeLabelRow: {
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  marginBottom: 4,
-},
-rangeLabel: {
-  fontSize: 12,
-  fontWeight: '600',
-  color: '#555',
-},
-rangeBarWrapper: {
-  flex: 1,
-  height: 20,
-  justifyContent: 'center',
-  marginHorizontal: 8,
-},
-arrowWrapper: {
-  position: 'absolute',
-  alignItems: 'center',
-  top: -20,
-  transform: [{ translateX: -6 }],
-  // Remove flexDirection: 'column-reverse'
-},
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 4,
+  },
+  rangeLabel: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#555',
+  },
+  rangeBarWrapper: {
+    flex: 1,
+    height: 20,
+    justifyContent: 'center',
+    marginHorizontal: 8,
+  },
+  arrowWrapper: {
+    position: 'absolute',
+    alignItems: 'center',
+    top: -20,
+    transform: [{ translateX: -6 }],
+  },
 
-arrow: {
-  position: 'absolute',
-  top: 14, // Position arrow below the text
-  width: 0,
-  height: 0,
-  borderLeftWidth: 5,
-  borderRightWidth: 5,
-  borderTopWidth: 8, // Changed from borderBottomWidth to borderTopWidth
-  borderStyle: 'solid',
-  borderLeftColor: 'transparent',
-  borderRightColor: 'transparent',
-  borderTopColor: '#007bff', // Changed from borderBottomColor to borderTopColor
-  transform: [{ translateX: -5 }],
-},
+  arrow: {
+    position: 'absolute',
+    top: 14,
+    width: 0,
+    height: 0,
+    borderLeftWidth: 5,
+    borderRightWidth: 5,
+    borderTopWidth: 8, 
+    borderStyle: 'solid',
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderTopColor: '#007bff', 
+    transform: [{ translateX: -5 }],
+  },
 
-arrowLabel: {
-  fontSize: 10,
-  color: '#007bff',
-  marginBottom: 2, // Small margin to separate text from arrow
-},
+  arrowLabel: {
+    fontSize: 10,
+    color: '#007bff',
+    marginBottom: 2,
+  },
 
-modalBackdrop: {
-  flex: 1,
-  backgroundColor: 'rgba(0, 0, 0, 0.4)',
-  justifyContent: 'flex-end',
-},
+  modalBackdrop: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    justifyContent: 'flex-end',
+  },
 
-modalContent: {
-  backgroundColor: '#fff',
-  borderTopLeftRadius: 20,
-  borderTopRightRadius: 20,
-  padding: 20,
-},
+  modalContent: {
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    padding: 20,
+  },
 
-modalTitle: {
-  fontSize: 18,
-  fontWeight: 'bold',
-  marginBottom: 12,
-},
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 12,
+  },
 
-modalItem: {
-  fontSize: 16,
-  paddingVertical: 6,
-},
+  modalItem: {
+    fontSize: 16,
+    paddingVertical: 6,
+  },
 
-modalInput: {
-  flex: 1,
-  paddingVertical: 6,
-  fontSize: 16,
-  borderBottomWidth: 1,
-  borderColor: '#ccc',
-  marginRight: 10,
-},
+  modalInput: {
+    flex: 1,
+    paddingVertical: 6,
+    fontSize: 16,
+    borderBottomWidth: 1,
+    borderColor: '#ccc',
+    marginRight: 10,
+  },
 
-modalCreate: {
-  fontSize: 16,
-  color: '#007aff',
-},
+  modalCreate: {
+    fontSize: 16,
+    color: '#007aff',
+  },
 
-modalCancel: {
-  textAlign: 'center',
-  marginTop: 16,
-  fontSize: 16,
-  color: '#ff3b30',
-},
+  modalCancel: {
+    textAlign: 'center',
+    marginTop: 16,
+    fontSize: 16,
+    color: '#ff3b30',
+  },
 
-tabContainer: {
-  flexDirection: 'row',
-  justifyContent: 'space-around',
-  marginBottom: 8,
-  backgroundColor: '#f2f2f2',
-  borderRadius: 8,
-  paddingVertical: 6,
-},
-tabItem: {
-  paddingHorizontal: 12,
-  paddingVertical: 4,
-},
-tabItemSelected: {
-  backgroundColor: '#007aff',
-  borderRadius: 12,
-},
-tabText: {
-  fontSize: 12,
-  color: '#333',
-},
-tabTextSelected: {
-  color: '#fff',
-  fontWeight: 'bold',
-},
-logo: {
-  width: 40,
-  height: 40,
-  borderRadius: 6,
-  backgroundColor: '#eee',
-},
+  tabContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginBottom: 8,
+    backgroundColor: '#f2f2f2',
+    borderRadius: 8,
+    paddingVertical: 6,
+  },
+  tabItem: {
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+  },
+  tabItemSelected: {
+    backgroundColor: '#007aff',
+    borderRadius: 12,
+  },
+  tabText: {
+    fontSize: 12,
+    color: '#333',
+  },
+  tabTextSelected: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  logo: {
+    width: 40,
+    height: 40,
+    borderRadius: 6,
+    backgroundColor: '#eee',
+  },
 });
