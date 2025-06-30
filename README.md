@@ -10,9 +10,9 @@
 
 - Explore Top Gainers and Losers
 - View detailed stock analytics
-- Visualize time series graphs (1D, 1W, 1M)
+- Visualize time series graphs (intradaily,daily,weekly and monthly)
 - Manage multiple watchlists
-- Add/remove stocks from watchlists using a modal
+- Add/remove stocks from watchlists
 
 
 
@@ -50,13 +50,16 @@ StocksApp/ -->
 
 ## 🔑 Features
 
-- 🔍 **Search** top stocks by ticker
-- 📈 **Toggleable Time Series**: 1D / 1W / 1M 
-- 📌 **Add to Watchlist** via modal
-- 💬 **Mock Data Enabled** via `USE_MOCK_DATA = true`
-- 📊 **Dynamic Price Graphs**
-- 🧠 **Context API** for global state (Watchlists)
-- 📱 Responsive and mobile-optimized design
+- 🔍 **Search** top stocks by ticker  
+- 📈 **Toggleable Time Series**: 1D / 1W / 1M / 1Y  
+- 📌 **Add to Watchlist** via modal  
+- 💬 **Mock Data Enabled** via `USE_MOCK_DATA = true`  
+- 📊 **Dynamic Price Graphs** for intraday and historical stock performance  
+- 🧠 **WatchlistContext** for global state (Watchlists)  
+- 📁 **Cached API Requests** for:
+  - 📈 **Stock Data** (quotes, time series, overviews)
+  - 🖼️ **Company Logos** (via API Ninjas)  
+- 📱 Responsive and mobile-optimized design  
 
 
 ## ⚙️ Technologies
@@ -90,8 +93,9 @@ const USE_MOCK_DATA = true;
 
 * `app/(tabs)/`: Contains bottom tab screens like Explore and Watchlists
 * `app/view-all/`: View all gainers/losers via `[type].tsx`
-* `app/stock/[id].tsx`: Full stock detail with graph, metrics, and watchlist modal
-* `services/`: Centralized API, cache, and mock logic
+* `app/stock/[symbol].tsx`: Full stock detail with graph, metrics, and watchlist modal
+* `app/watchlist/[id].tsx`: View all tickers saved within the watchlist
+* `services/`: Centralized API, cache,mock logic and Watchlist Context
 * `types/`: Strict typing for Ticker and API responses
 
 ---
