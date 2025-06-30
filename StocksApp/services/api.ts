@@ -1,7 +1,6 @@
 // src/services/api.ts
 import axios from 'axios';
 import { mockOverviews, mockQuotes, mockMovers, sharedMockTimeSeries } from './mockData';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getCache, setCache } from '../services/cache';
 
 import { MarketMoversResponse } from '@/types/MarketMoversResponse';
