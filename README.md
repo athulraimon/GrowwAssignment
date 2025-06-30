@@ -18,9 +18,9 @@
 
 ## 📂 Directory Structure
 
-
-StocksApp/
-├── app/
+<!-- 
+StocksApp/ -->
+<!-- ├── app/
 │   ├── (tabs)/
 │   │   ├── _layout.tsx          # Tabs layout
 │   │   ├── explore.tsx          # Explore screen
@@ -42,7 +42,8 @@ StocksApp/
 │   └── WatchlistContext.tsx    # Context for managing watchlists
 ├── types/
 │   ├── MarketMoversResponse.ts # Interfaces for API responses
-│   └── Ticker.ts               # Stock ticker type definition
+│   └── Ticker.ts               # Stock ticker type definition -->
+![alt text](documentation/structure.png)
 
 
 
