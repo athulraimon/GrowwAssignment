@@ -2,7 +2,7 @@ Thanks! Based on your image, here's the Markdown documentation updated with your
 
 ---
 
-```markdown
+
 # 📈 StocksApp — React Native Application
 
 ## 🧩 Overview
@@ -15,11 +15,10 @@ Thanks! Based on your image, here's the Markdown documentation updated with your
 - Manage multiple watchlists
 - Add/remove stocks from watchlists using a modal
 
----
+
 
 ## 📂 Directory Structure
 
-```
 
 StocksApp/
 ├── app/
@@ -47,9 +46,8 @@ StocksApp/
 │   └── Ticker.ts                 # Ticker type used in stock cards
 
 
-````
 
----
+
 
 ## 🔑 Features
 
@@ -61,7 +59,6 @@ StocksApp/
 - 🧠 **Context API** for global state (Watchlists)
 - 📱 Responsive and mobile-optimized design
 
----
 
 ## ⚙️ Technologies
 
@@ -73,7 +70,6 @@ StocksApp/
 - Alpha Vantage API for stock information
 - API ninjas for stock logos.
 
----
 
 ## 🚀 Setup & Run
 
