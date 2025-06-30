@@ -1,4 +1,3 @@
-Thanks! Based on your image, here's the Markdown documentation updated with your **actual directory structure** under `app/`:
 
 ---
 
@@ -11,7 +10,7 @@ Thanks! Based on your image, here's the Markdown documentation updated with your
 
 - Explore Top Gainers and Losers
 - View detailed stock analytics
-- Visualize time series graphs (1D, 1W, 1M, 3M, 6M, 1Y)
+- Visualize time series graphs (1D, 1W, 1M)
 - Manage multiple watchlists
 - Add/remove stocks from watchlists using a modal
 
@@ -23,28 +22,27 @@ Thanks! Based on your image, here's the Markdown documentation updated with your
 StocksApp/
 ├── app/
 │   ├── (tabs)/
-│   │   ├── \_layout.tsx           # Tabs layout
-│   │   ├── explore.tsx           # Explore screen
-│   │   └── watchlists.tsx        # Watchlist overview tab
+│   │   ├── _layout.tsx          # Tabs layout
+│   │   ├── explore.tsx          # Explore screen
+│   │   └── watchlists.tsx       # Watchlist overview tab
 │   ├── stock/
-│   │   └── \[id].tsx              # Stock detail screen (Dynamic route)
+│   │   └── [id].tsx             # Stock detail screen (Dynamic route)
 │   ├── view-all/
-│   │   └── \[type].tsx            # View all gainers/losers
+│   │   └── [type].tsx           # View all gainers/losers
 │   ├── watchlist/
-│   │   ├── \[id].tsx              # Watchlist details page
-│   ├── \_layout.tsx           # Watchlist stack layout
-│   ├── +not-found.tsx        # Not found fallback
-├── components/                   # Reusable components like StockCard
-    ├── StockCard.tsx
+│   │   └── [id].tsx             # Watchlist details page
+│   ├── _layout.tsx             # Root layout for nested stacks
+│   └── +not-found.tsx          # Not found fallback screen
+├── components/
+│   └── StockCard.tsx           # Reusable stock card component
 ├── services/
-│   ├── api.ts                    # API calls to Alpha Vantage (with mock fallback)
-│   ├── cache.ts                  # Caching utilities (if used)
-│   ├── mockData.ts               # Mock data for offline development
-│   └── WatchlistContext.tsx      # Context for managing watchlists
+│   ├── api.ts                  # API calls to Alpha Vantage
+│   ├── cache.ts                # Caching utilities (if used)
+│   ├── mockData.ts             # Offline mock data
+│   └── WatchlistContext.tsx    # Context for managing watchlists
 ├── types/
-│   ├── MarketMoversResponse.ts   # Interface for API response
-│   └── Ticker.ts                 # Ticker type used in stock cards
-
+│   ├── MarketMoversResponse.ts # Interfaces for API responses
+│   └── Ticker.ts               # Stock ticker type definition
 
 
 
@@ -121,13 +119,13 @@ const USE_MOCK_DATA = true;
 ## 📸 UI Components
 
 ### 🔍 Explore Page
-This is the main screen of the app showing top gainers and losers with search functionality.
+- This is the main screen of the app showing top gainers and losers with search functionality.
 ![Explore Page](documentation/image.png)
 
 ---
 
 ### 📈 View All Gainers/Losers
-Tapping "View All" on gainers or losers shows the full list of that category.
+- Tapping "View All" on gainers or losers shows the full list of that category.
 ![View All Gainers/Losers](documentation/image-1.png)
 
 ---
@@ -152,15 +150,15 @@ Clicking the bookmark icon shows a modal to:
 ---
 
 ### 📋 Watchlists Overview
-Shows a list of all created watchlists.
-Each watchlist is tappable to view its stocks.
+- Shows a list of all created watchlists.
+- Each watchlist is tappable to view its stocks.
 ![Watchlists Overview](documentation/image-4.png)
 
 ---
 
 ### 📂 Stocks Inside a Watchlist
-Displays all bookmarked stocks under the selected watchlist.
-Each stock can be tapped to view its details.
+- Displays all bookmarked stocks under the selected watchlist.
+- Each stock can be tapped to view its details.
 ![Stocks in Watchlist](documentation/image-5.png)
 
 
