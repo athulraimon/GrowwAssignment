@@ -139,7 +139,7 @@ const USE_MOCK_DATA = true;
 Displays detailed information about a selected stock including:
 - Name, symbol, exchange
 - Real-time price and % change
-- Time series graph with 1D to 1Y toggle
+- Time series graph with intradaily to monthly toggle
 - Analyst target, 52-week range with current indicator
 - Sector/industry tags and market metrics
 ![Stock Details Page](documentation/image-2.png)
